@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web CAD Viewer</title>
+    <link rel="stylesheet" href="../styles/common.css" />
+    <script src="../js/wesmartCadViewer.js"></script>
+    <script src="../js/ListBox.js"></script>
+    
+  </head>
+  <body>
+    <div class="wrapper">
+      
+      <!-- header -->
+      <div class="top-header">
+        
+        <div class="title-wrap">
+          <div class="logo">
+            <img src="../icons/we_logo.png" alt="" class="logo-img">
+          </div>
+          <div class="title">Web CAD Viewer</div>
+        </div>
+        
+        <div class="file-wrap">
+          <div class="file-title">test.vds</div>
+          <div class="btn-wrap">
+            <div class="btn-bg">
+              <img src="../icons/open_drawing.png" alt="" class="file-icon">
+            </div>
+            <div class="hover-text">도면열기</div>
+          </div>
+        </div>
+        
+        <div class="quest-wrap">
+          <div class="btn-wrap">
+            <div class="btn-bg">
+              <img src="../icons/qna.png" alt="" class="qna-icon">
+            </div>
+            <div class="hover-text">문의하기</div>
+          </div>
+        </div>
+        
+      </div>
+      <!-- header -->
+      
+      <!-- MAIN -->
+      <div class="contents">
+        <div class="bg-dark">
+          <canvas id="display"></canvas>
+        </div>
+      </div>
+      <!-- MAIN -->
+      
+    </div>
+    <!-- <table>
+      <tr>
+        <td>
+          <select id="measurementOption" onclick="measurementSelect();">
+            <option value="none">측정도구</option>
+            <option value="distance">Distance</option>
+            <option value="angle">Angle</option>
+            <option value="point">Point</option>
+            <option value="area">Area</option>
+          </select>
+        </td>
+        <td id="measurementInfo"></td>
+      </tr>
+      <tr>
+        <td>
+          <input
+          type="button"
+          onclick="showPopUpOsnaps()"
+          value="OsnapMode"
+          class="dropbtn"
+          style="background-color: white; border: 2px solid black"
+          />
+        </td>
+      </tr>
+      <tr style="display: inline-block">
+        <td>
+          <input
+          type="button"
+          onclick="wesmartCad.eraseHighLight(callbackOption)"
+          value="HightLight 해제"
+          />
+        </td>
+        <td>
+          <input
+          type="button"
+          onclick="wesmartCad.zoomExtends(callbackOption)"
+          value="Zoom Extend"
+          />
+        </td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td>
+          <canvas id="display"> </canvas>
+        </td>
+        <td>
+          <canvas id="display2"> </canvas>
+        </td>
+        <td valign="top" id="LayersListBox" colspan="2">
+          <input
+          type="button"
+          value="전체 선택"
+          onclick="wesmartCad.EnableAllLayers()"
+          class="btnAll btnAllCheck"
+          />
+          <input
+          type="button"
+          value="전체 선택 해제"
+          onclick="wesmartCad.DisableAllLayers()"
+          class="btnAll btnAllDisable"
+          />
+        </td>
+        <div id="facility">
+        </div>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td>
+          <label id="Label1"> Coordinates :</label>
+          <button id="toggleBtn" onclick="coordinatesToggle()">On</button>
+          <label id="info3"></label>
+          <br />
+        </td>
+      </tr>
+    </table>
+    <div
+    id="popupOsnaps"
+    style="
+    position: absolute;
+    left: 30%;
+    top: 20%;
+    display: none;
+    background-color: white;
+    border: 2px solid black;
+    width: 200px;
+    height: 350px;
+    "
+    align="center"
+    >
+    <br />
+    <div>
+      <p style="color: black">
+        <b>OsnapMode </b>
+      </p>
+      <p style="color: black">
+        <input id="endpoint" type="checkbox" checked />
+        EndPoint
+      </p>
+      <p style="color: black">
+        <input id="midpoint" type="checkbox" checked />
+        MidPoint
+      </p>
+      <p style="color: black">
+        <input id="centerpoint" type="checkbox" checked />
+        CenterPoint
+      </p>
+      <p style="color: black">
+        <input id="near" type="checkbox" />
+        Near
+      </p>
+      <p style="color: black">
+        <input id="insert" type="checkbox" />
+        Insert
+      </p>
+      <p style="color: black">
+        <input id="node" type="checkbox" />
+        Node
+      </p>
+    </div>
+    <br />
+    <input
+    type="button"
+    onclick="closePopUpOsnaps()"
+    value="OK"
+    align="center"
+        style="width: 100px"
+        />
+      </div>
+      <button onclick="entityArea();">선택 객체 면적</button>
+      <h5>리스트 POI</h5>
+      <button
+      onclick="addPOIList('marker_1','../images/marker_yellow.png',-3000, 3000 ,1000 ,'marker_2','../images/marker_yellow.png',5000, 5000, 1000 ,'marker_3','../images/marker_yellow.png',1000, 12000, 1000);"
+      >
+      생성
+    </button>
+    
+    <button onclick="deletePOIList('marker_3');">삭제</button>
+    <button onclick="onPOIList('marker_1');">ON</button>
+    <button onclick="offPOIList('marker_1');">OFF</button>
+    <br />
+    <h5>단일 POI</h5>
+    <button onclick="addPOI('marker_10','../images/marker_blue.png',1000);">
+      마우스클릭 poi생성
+    </button>
+    <button onclick="deletePOI();">마우스클릭 poi삭제</button>
+    <br />
+    
+    <div id="popup-box">
+      <h3 style="width: 30%; display: inline-block">속성</h3>
+      <div class="popup-content">
+      </div>
+      <div class="img-wrap" onclick="popupClose()">
+        <img src="../images/close.png" alt="close button" />
+      </div>
+    </div> -->
+    <script src="../js/script.js"></script>
+  </body>
+  </html>
+  
