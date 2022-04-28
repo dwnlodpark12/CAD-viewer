@@ -57,7 +57,7 @@
           conWidth,
           conHeight,
           vdsFiles,
-          true,
+          false,
           callbackOption
         );
       }
@@ -194,17 +194,20 @@
           file.className = "filesImg";
 
           if (typeof data[key] == "object") {
+            checkbox.setAttribute("type", "checkbox");
+            checkbox.setAttribute("name", value.name);
+            checkbox.setAttribute("id", value.code);
+            checkbox.setAttribute("value", value.parent);
+            checkbox.checked = true;
+
+            list.appendChild(checkbox);
+            
             var listName = document.createTextNode(value.name);
             data[key].parent == null
               ? list.appendChild(folder)
               : list.appendChild(file);
             list.appendChild(listName);
 
-            checkbox.setAttribute("type", "checkbox");
-            checkbox.setAttribute("name", value.name);
-            checkbox.setAttribute("id", value.code);
-            checkbox.setAttribute("value", value.parent);
-            checkbox.checked = true;
 
             // ** checkbox 의 type, name, id, value  를 반드시 기재 부탁드립니다.
             // ** wesmartCadViewer에서 동작하는데에 필요한 태그 선택자 입니다.
@@ -218,7 +221,6 @@
               wesmartCad.doCheckListItem(e, callbackOption);
             });
 
-            list.appendChild(checkbox);
 
             if (data[key].children && data[key].children.length) {
               let childResult = createList(data[key].children);
@@ -450,4 +452,26 @@
         const popupBox = document.getElementById("popup-box");
         popupBox.style.display = "none";
         wesmartCad.eraseHighLight(callbackOption);
+      }
+
+      // function doSomething() {
+      //   console.log('test');
+      //   onChangeFile();
+      // }
+
+      function onChangeFile(evt) {
+        console.log(evt.files);
+        let file = evt.files;
+        console.log(file);
+
+        if(file && file.length > 0) {
+          let reader = new FileReader(); 
+
+          const openFile = file[0];
+          reader.onloadend = (e) => {
+            wesmartCad.openFiles(e.target.result, openFile.name);
+          }
+          reader.readAsText(openFile);
+        }
+        evt.value = "";
       }

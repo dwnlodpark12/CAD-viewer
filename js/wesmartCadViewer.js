@@ -27880,6 +27880,12 @@ function WesmartCad() {
     }
   }
 
+  this.openFiles = function (data, filename) {
+    var vdcanvas = vdmanager.vdrawObject();
+    vdcanvas.SelectDocumentBlob(data, filename);
+    // console.log(data, filename);
+  }
+
   //===========================================
 
   // canvas Mouse Move Event Fn

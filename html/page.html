@@ -27,7 +27,10 @@
           <div class="file-title">test.vds</div>
           <div class="btn-wrap">
             <div class="btn-bg">
-              <img src="../icons/open_drawing.png" alt="" class="file-icon">
+              <label for="input-file" class="btn-label">
+                <input type="file" style="visibility: hidden; " id="input-file" onchange="onChangeFile(this)" accept=".vds" />
+              </label>
+              <!-- <img src="../icons/open_drawing.png" alt="" class="file-icon"> -->
             </div>
             <div class="hover-text">도면열기</div>
           </div>
@@ -52,8 +55,108 @@
         </div>
       </div>
       <!-- MAIN -->
-      
+
+      <!-- FLOATING MENU -->
+
+      <div class="float-menu">
+
+        <div class="menu-wrap">
+
+          <div class="step-one drawing">
+            <div class="icon-wrap">
+              <img src="../icons/left_menu/showfulldrawing.png" alt="">
+              <div class="float-hover">Show Full Drawing</div>
+            </div>
+          </div>
+          <div class="step-one extents">
+            <div class="icon-wrap">
+              <img src="../icons/left_menu/full_screen.png" alt="">
+              <div class="float-hover">Full Screen</div>
+            </div>
+          </div>
+          <div class="step-one measures">
+            <div class="icon-wrap">
+              <img src="../icons/left_menu/measure.png" alt="">
+              <div class="float-hover">Measure</div>
+
+              <div class="measure-wrap" style="border: 1px solid red;">
+                <div class="step-two-wrapper">
+
+                  <div class="step-two">
+                    <div class="icon-wrap">
+                      <img src="../icons/left_menu/submenu_distance/distance.png" alt="">
+                      <div class="float-hover">Distance</div>
+                    </div>
+                  </div>
+                  <div class="step-two">
+                    <div class="icon-wrap">
+                      <img src="../icons/left_menu/submenu_distance/coordinate.png" alt="">
+                      <div class="float-hover">Coordinates</div>
+                    </div>
+                  </div>
+                  <div class="step-two">
+                    <div class="icon-wrap">
+                      <img src="../icons/left_menu/submenu_distance/area.png" alt="">
+                      <div class="float-hover">Area</div>
+                    </div>
+                  </div>
+                  <div class="step-two">
+                    <div class="icon-wrap">
+                      <img src="../icons/left_menu/submenu_distance/angle.png" alt="">
+                      <div class="float-hover">Angle</div>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="step-one layers">
+            <div class="icon-wrap">
+              <img src="../icons/left_menu/layer.png" alt="">
+              <div class="float-hover">Layer</div>
+            </div>
+          </div>
+          <div class="step-one osnaps">
+            <div class="icon-wrap">
+              <img src="../icons/left_menu/osnap.png" alt="">
+              <div class="float-hover">Osnap</div>
+            </div>
+          </div>
+          <div class="step-one pois">
+            <div class="icon-wrap">
+              <img src="../icons/left_menu/poi.png" alt="">
+              <div class="float-hover">POI</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- FLOATING MENU -->
+
+      <!-- FACILITY -->
+      <div id="facility">
+        <div class="fac-title-wrap">
+          <div class="fac-title">Layer</div>
+          <div class="fac-close-btn">close img</div>
+        </div>
+        <hr style="background-color: #fff">
+      </div>
+      <!-- FACILITY -->
+
+
+    <div id="popup-box">
+      <h3 style="width: 30%; display: inline-block">속성</h3>
+      <div class="popup-content">
+        <div class="closs-btn-wrap">
+          <!-- <img src="" alt="X" class="close-btn">X -->
+          close btn
+        </div>
+      </div>
     </div>
+  </div>
+
     <!-- <table>
       <tr>
         <td>
