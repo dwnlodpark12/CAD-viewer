@@ -140,7 +140,15 @@
         // canvasId:: zoomExtents 되는 canvas 의 id값
       }
       function afterOpenDoc(fileName) {
-        console.log(fileName);
+        // console.log(fileName);
+        let lastName;
+        const fileTitle = document.querySelector('.file-title');
+        console.log(fileTitle.innerHTML);
+        fileName.includes('/') ? lastName = fileName.split('/') : null ; 
+        console.log(lastName);
+        fileTitle.innerHTML = lastName[lastName.length - 1];
+        
+        // fileTitle.innerText(fileName);
         // fileName :: 파일명
       }
       function afterMakeLayerList(layers) {
@@ -460,9 +468,7 @@
       // }
 
       function onChangeFile(evt) {
-        console.log(evt.files);
         let file = evt.files;
-        console.log(file);
 
         if(file && file.length > 0) {
           let reader = new FileReader(); 
@@ -470,8 +476,42 @@
           const openFile = file[0];
           reader.onloadend = (e) => {
             wesmartCad.openFiles(e.target.result, openFile.name);
+            console.log(openFile);
+            const fileText = document.querySelector('.file-title');
+            console.log(fileText);
+            fileText.innerText = openFile.name; 
           }
           reader.readAsText(openFile);
         }
         evt.value = "";
+
+        
       }
+
+      function popupClose() {
+        const popup = document.querySelector("#popup-box");
+        console.log(popup);
+        popup.style.display = 'none';
+
+      }
+
+// addEventListeners 
+
+// measure
+const measures = document.querySelector(".measures img");
+measures.addEventListener("click", onClickMeasures);
+
+// onClick Events 
+
+  function onClickMeasures(e) {
+    // 기능 탭 visible 및 color change..
+    console.log(e);
+    measures.setAttribute('src', '../icons/left_menu_click/measure.png');
+    // measures.style.backgroundColor = '#3c4259';
+    const parent = e.target.parentNode;
+    console.log(parent);
+    parent.style.backgroundColor = '#3c4259';
+
+  }
+
+

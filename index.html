@@ -24,7 +24,7 @@
         </div>
         
         <div class="file-wrap">
-          <div class="file-title">test.vds</div>
+          <div class="file-title"></div>
           <div class="btn-wrap">
             <div class="btn-bg">
               <label for="input-file" class="btn-label">
@@ -63,7 +63,7 @@
         <div class="menu-wrap">
 
           <div class="step-one drawing">
-            <div class="icon-wrap">
+            <div class="icon-wrap" onclick="onClickDrawing(e)">
               <img src="../icons/left_menu/showfulldrawing.png" alt="">
               <div class="float-hover">Show Full Drawing</div>
             </div>
@@ -79,7 +79,7 @@
               <img src="../icons/left_menu/measure.png" alt="">
               <div class="float-hover">Measure</div>
 
-              <div class="measure-wrap" style="border: 1px solid red;">
+              <div class="measure-wrap" style="">
                 <div class="step-two-wrapper">
 
                   <div class="step-two">
@@ -139,9 +139,11 @@
       <div id="facility">
         <div class="fac-title-wrap">
           <div class="fac-title">Layer</div>
-          <div class="fac-close-btn">close img</div>
+          <div class="fac-close-btn">
+            <img src="../icons/close.png" alt="close btn" />
+          </div>
         </div>
-        <hr style="background-color: #fff">
+        <hr style="background-color: #fff; margin: 0.5rem 0;">
       </div>
       <!-- FACILITY -->
 
@@ -149,10 +151,9 @@
     <div id="popup-box">
       <h3 style="width: 30%; display: inline-block">속성</h3>
       <div class="popup-content">
-        <div class="closs-btn-wrap">
-          <!-- <img src="" alt="X" class="close-btn">X -->
-          close btn
-        </div>
+      </div>
+      <div class="closs-btn-wrap" onclick="popupClose()">
+        <img src="../icons/close.png" alt="X" class="close-btn">
       </div>
     </div>
   </div>
