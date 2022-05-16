@@ -71,6 +71,8 @@
         var insert = document.getElementById("insert").checked;
         var node = document.getElementById("node").checked;
 
+        console.log(endpoint, midpoint, centerpoint, near, insert, node);
+
         var status = false;
 
         // 측정도구 사용 중간에 오스냅 옵션을 변경할 경우 상태유지를 위해 필요한 부분입니다. - wesmartCad.measureStatus은 기본값이 false로 되어있습니다.
@@ -190,28 +192,46 @@
           const value = data[key];
 
           const list = document.createElement("li");
+          // const span = document.createElement("span");
           const checkbox = document.createElement("input");
+          const label = document.createElement("label")
 
           const folder = document.createElement("img");
           const file = document.createElement("img");
 
-          folder.setAttribute("src", "../images/open-folder.png");
-          file.setAttribute("src", "../images/documents.png");
+
+          folder.setAttribute("src", "../icons/layer_open.png");
+          // file.setAttribute("src", "../images/documents.png");
 
           folder.className = "folderImg";
-          file.className = "filesImg";
+          // file.className = "filesImg";
 
           if (typeof data[key] == "object") {
             checkbox.setAttribute("type", "checkbox");
             checkbox.setAttribute("name", value.name);
             checkbox.setAttribute("id", value.code);
+            checkbox.setAttribute("class", 'layer-checkbox');
             checkbox.setAttribute("value", value.parent);
+            checkbox.setAttribute("checked", true);
             checkbox.checked = true;
+            // checkbox.hidden = true;
+            label.setAttribute("for",value.code);
+            // label.setAttribute("class", "checkbox-label");
 
+            label.style.display = 'inline-block';
+            label.style.width = '16px';
+            label.style.height = '16px';
+            label.style.border = '2px solid #ccc';
+
+            label.style.backgroundImage = `url('../icons/check.png')`;
+            label.style.backgroundRepeat = 'no-repeat';
+            label.style.backgroundPosition = 'center';
+              
             list.appendChild(checkbox);
+            list.appendChild(label);
             
             var listName = document.createTextNode(value.name);
-            data[key].parent == null
+            data[key].parent == null && data[key].children.length !== 0
               ? list.appendChild(folder)
               : list.appendChild(file);
             list.appendChild(listName);
@@ -224,6 +244,17 @@
             checkbox.addEventListener("change", function (e) {
               // checkbox 중복 선택 시 따른 하위 또는 상위 계층의 선택 유무의 함수
               docheckedItem(e, listTree);
+
+              // checkbox true/false 에 따라 label 변화 감지
+              if(checkbox.checked) {
+                label.style.backgroundImage = `url('../icons/check.png')`;
+                label.style.backgroundRepeat = 'no-repeat';
+                label.style.backgroundPosition = 'center';
+              }else {
+                label.style.backgroundImage = 'none';
+                label.style.backgroundRepeat = 'none';
+                label.style.backgroundPosition = 'none';
+              }
 
               // checkbox 선택 시 해당하는 entity 의 visible 관리 함수
               wesmartCad.doCheckListItem(e, callbackOption);
@@ -248,16 +279,17 @@
         if (folder.className.includes("active")) {
           folder.classList.remove("active");
           folderList.classList.remove("active");
-          folder.setAttribute("src", "../images/open-folder.png");
+          folder.setAttribute("src", "../icons/layer_open.png");
           return;
         }
         folder.classList.add("active");
         folderList.classList.add("active");
-        folder.setAttribute("src", "../images/close-folder.png");
+        folder.setAttribute("src", "../icons/layer_close.png");
       }
 
       // checkbox 중복 선택 시 따른 하위 또는 상위 계층의 선택 유무의 함수
       function docheckedItem(event, data) {
+        console.log(event);
         for (var index in data) {
           // 1. 1단계 선택 시 자식 checkbox 모두 checked
           if (event.target.value == "null") {
@@ -270,7 +302,7 @@
                   for (var nodeList of checkboxes) {
                     if (nodeList.value == event.target.name) {
                       event.target.checked
-                        ? (nodeList.checked = true)
+                        ? (nodeList.checked = true) 
                         : (nodeList.checked = false);
                     }
                   }
@@ -304,11 +336,16 @@
                 }
               }
               checkTrue.includes(false)
-                ? (parentBox.indeterminate = true)
-                : (parentBox.indeterminate = false) && (parentBox.checked = true);
+                ? (parentBox.checked = false)
+                : (parentBox.checked = true);
             }
           }
         }
+      }
+
+      function doChangeLabels(e, label) {
+        console.log(e);
+        console.log(label);
       }
 
       //======== osnap 창 켜기 ========
@@ -507,11 +544,53 @@ measures.addEventListener("click", onClickMeasures);
     // 기능 탭 visible 및 color change..
     console.log(e);
     measures.setAttribute('src', '../icons/left_menu_click/measure.png');
-    // measures.style.backgroundColor = '#3c4259';
     const parent = e.target.parentNode;
     console.log(parent);
     parent.style.backgroundColor = '#3c4259';
+    const measureGroup = document.querySelector('.measure-wrap');
+    measureGroup.style.opacity = 1;
 
   }
 
 
+function onClickDrawing() {
+  wesmartCad.zoomExtends();
+}
+
+const extent = document.querySelector(".extents");
+extent.addEventListener("click", function(e) {
+  document.documentElement.requestFullscreen();
+})
+
+// const osnapCheckbox = document.querySelectorAll('.osnaps-check');
+// console.log(osnapCheckbox);
+// for(const i in osnapCheckbox) {
+  // console.log(osnapCheckbox[i]);
+  // osnapCheckbox[i].addEventListener("change", function(e) {
+    // console.log(e.target.checked);
+    // osnapInit();
+
+  // })
+// }
+// osnapCheckbox.addEventListener("change", function(e) {
+//   console.log(e);
+// })
+
+// Layers
+
+const layers = document.querySelector(".layers img");
+console.log(layers);
+layers.addEventListener("click", onClickLayerBtn);
+
+function onClickLayerBtn(e) {
+  console.log(e);
+  layers.setAttribute("src", "../icons/left_menu_click/layer.png")
+  // const layerList = document.querySelector('#facility');
+  
+  // layerList.style.display === 'block' ? layerList.style.display = 'none' : layerList.style.display = 'block' ; 
+  // if(layerList.style.display === 'block') {
+  //   layerList.style.display = 'none'
+  //   layerIcon.setAttribute('src', '../icons/left_menu_click/layer.png');
+  //   console.log(layerIcon);
+  // }
+}

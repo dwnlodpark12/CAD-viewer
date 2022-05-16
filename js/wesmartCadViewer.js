@@ -27894,14 +27894,14 @@ function WesmartCad() {
     var entity = e.target.GetEntityFromPoint(e.xPix, e.yPix);
     if (e.mousebutton == 3) return;
     if (e.mousebutton == 0) {
-      e.target.canvas.style.cursor = "crosshair";
+      e.target.canvas.style.cursor = "none";
       e.target.canvas.title = "";
       // console.log(entity);
 
       if (entity != null && entity._t != undefined) {
         var xprop = vdcanvas.GetXProperty(entity, "건축");
         if (xprop !== null && xprop.PropValue === true) return;
-        e.target.canvas.style.cursor = "pointer";
+        // e.target.canvas.style.cursor = "pointer";
         e.target.canvas.title = entity.LayerRef.Name;
       }
     }
