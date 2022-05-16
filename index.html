@@ -8,46 +8,48 @@
     <script src="../js/wesmartCadViewer.js"></script>
     <script src="../js/ListBox.js"></script>
     <link rel="stylesheet" href="../styles/common.css" />
-    
   </head>
   <body>
     <div class="wrapper">
-      
       <!-- header -->
       <div class="top-header">
-        
         <div class="title-wrap">
           <div class="logo">
-            <img src="../icons/we_logo.png" alt="" class="logo-img">
+            <img src="../icons/we_logo.png" alt="" class="logo-img" />
           </div>
           <div class="title">Web CAD Viewer</div>
         </div>
-        
+
         <div class="file-wrap">
           <div class="file-title"></div>
           <div class="btn-wrap">
             <div class="btn-bg">
               <label for="input-file" class="btn-label">
-                <input type="file" style="visibility: hidden; " id="input-file" onchange="onChangeFile(this)" accept=".vds" />
+                <input
+                  type="file"
+                  style="visibility: hidden"
+                  id="input-file"
+                  onchange="onChangeFile(this)"
+                  accept=".vds"
+                />
               </label>
               <!-- <img src="../icons/open_drawing.png" alt="" class="file-icon"> -->
             </div>
             <div class="hover-text">도면열기</div>
           </div>
         </div>
-        
+
         <div class="quest-wrap">
           <div class="btn-wrap">
             <div class="btn-bg">
-              <img src="../icons/qna.png" alt="" class="qna-icon">
+              <img src="../icons/qna.png" alt="" class="qna-icon" />
             </div>
             <div class="hover-text">문의하기</div>
           </div>
         </div>
-        
       </div>
       <!-- header -->
-      
+
       <!-- MAIN -->
       <div class="contents">
         <div class="bg-dark">
@@ -59,148 +61,194 @@
       <!-- FLOATING MENU -->
 
       <div class="float-menu">
-
         <div class="menu-wrap">
-
           <div class="step-one drawing">
             <div class="icon-wrap" onclick="onClickDrawing()">
-              <img src="../icons/left_menu/showfulldrawing.png" alt="">
+              <img src="../icons/left_menu/showfulldrawing.png" alt="" />
               <div class="float-hover">Show Full Drawing</div>
             </div>
           </div>
           <div class="step-one extents">
             <div class="icon-wrap">
-              <img src="../icons/left_menu/full_screen.png" alt="">
+              <img src="../icons/left_menu/full_screen.png" alt="" />
               <div class="float-hover">Full Screen</div>
             </div>
           </div>
           <div class="step-one measures">
             <div class="icon-wrap">
-              <img src="../icons/left_menu/measure.png" alt="">
+              <img src="../icons/left_menu/measure.png" alt="" />
               <div class="float-hover">Measure</div>
 
               <div class="measure-wrap" style="">
                 <div class="step-two-wrapper">
-
                   <div class="step-two">
                     <div class="icon-wrap">
-                      <img src="../icons/left_menu/submenu_distance/distance.png" alt="">
+                      <img
+                        src="../icons/left_menu/submenu_distance/distance.png"
+                        alt=""
+                      />
                       <div class="measure-hover">Distance</div>
                     </div>
                   </div>
                   <div class="step-two">
                     <div class="icon-wrap">
-                      <img src="../icons/left_menu/submenu_distance/coordinate.png" alt="">
+                      <img
+                        src="../icons/left_menu/submenu_distance/coordinate.png"
+                        alt=""
+                      />
                       <div class="measure-hover">Coordinates</div>
                     </div>
                   </div>
                   <div class="step-two">
                     <div class="icon-wrap">
-                      <img src="../icons/left_menu/submenu_distance/area.png" alt="">
+                      <img
+                        src="../icons/left_menu/submenu_distance/area.png"
+                        alt=""
+                      />
                       <div class="measure-hover">Area</div>
                     </div>
                   </div>
                   <div class="step-two">
                     <div class="icon-wrap">
-                      <img src="../icons/left_menu/submenu_distance/angle.png" alt="">
+                      <img
+                        src="../icons/left_menu/submenu_distance/angle.png"
+                        alt=""
+                      />
                       <div class="measure-hover">Angle</div>
                     </div>
                   </div>
-                  
                 </div>
               </div>
             </div>
           </div>
           <div class="step-one layers">
-            <div class="icon-wrap">
-              <img src="../icons/left_menu/layer.png" alt="">
+            <div class="icon-wrap" style="background-color: #3c4259">
+              <img src="../icons/left_menu_click/layer.png" alt="" />
               <div class="float-hover">Layer</div>
             </div>
           </div>
           <div class="step-one osnaps">
-            <div class="icon-wrap">
-              <img src="../icons/left_menu/osnap.png" alt="">
+            <div class="icon-wrap" style="background-color: #3c4259">
+              <img src="../icons/left_menu_click/osnap.png" alt="" />
               <div class="float-hover">Osnap</div>
             </div>
           </div>
           <div class="step-one pois">
             <div class="icon-wrap">
-              <img src="../icons/left_menu/poi.png" alt="">
+              <img src="../icons/left_menu/poi.png" alt="" />
               <div class="float-hover">POI</div>
             </div>
           </div>
-
         </div>
       </div>
 
       <!-- FLOATING MENU -->
 
       <!-- FACILITY -->
-      <div id="facility" style="display: block;">
-        <div class="fac-title-wrap">
-          <div class="fac-title">Layer</div>
-          <div class="close-btn">
-            <img src="../icons/close.png" alt="close btn" />
+      <div class="right-menus">
+        <div id="facility" style="display: block">
+          <div class="fac-title-wrap">
+            <div class="fac-title">Layer</div>
+            <div class="close-btn">
+              <img src="../icons/close.png" alt="close btn" />
+            </div>
+          </div>
+          <hr style="background-color: #fff; margin: 0.5rem 0" />
+        </div>
+        <!-- FACILITY -->
+
+        <!-- OSNAPS -->
+        <div id="osnaps-wrap">
+          <div class="osnap-title-wrap">
+            <div class="osnap-title">OSNAPS</div>
+            <div class="close-btn">
+              <img src="../icons/close.png" alt="close btn" />
+            </div>
+          </div>
+          <hr style="background-color: #fff; margin: 0.5rem 0" />
+          <div class="osnap">
+            <input
+              type="checkbox"
+              value="endpoint"
+              id="endpoint"
+              class="osnaps-check"
+              hidden
+              checked
+            />
+            <label for="endpoint"></label>
+            <div class="osnap-name">End point (끝점)</div>
+          </div>
+          <div class="osnap">
+            <input
+              type="checkbox"
+              value="midpoint"
+              id="midpoint"
+              class="osnaps-check"
+              hidden
+              checked
+            />
+            <label for="midpoint"></label>
+            <div class="osnap-name">Mid point (중앙점)</div>
+          </div>
+          <div class="osnap">
+            <input
+              type="checkbox"
+              value="centerpoint"
+              id="centerpoint"
+              class="osnaps-check"
+              hidden
+              checked
+            />
+            <label for="centerpoint"></label>
+            <div class="osnap-name">Center point (중심점)</div>
+          </div>
+          <div class="osnap">
+            <input
+              type="checkbox"
+              value="near"
+              id="near"
+              class="osnaps-check"
+              hidden
+            />
+            <label for="near"></label>
+            <div class="osnap-name">Near (근처점)</div>
+          </div>
+          <div class="osnap">
+            <input
+              type="checkbox"
+              value="insert"
+              id="insert"
+              class="osnaps-check"
+              hidden
+            />
+            <label for="insert"></label>
+            <div class="osnap-name">Insert (삽입점)</div>
+          </div>
+          <div class="osnap">
+            <input
+              type="checkbox"
+              value="node"
+              id="node"
+              class="osnaps-check"
+              hidden
+            />
+            <label for="node"></label>
+            <div class="osnap-name">Node (노드)</div>
           </div>
         </div>
-        <hr style="background-color: #fff; margin: 0.5rem 0;">
       </div>
-      <!-- FACILITY -->
-
       <!-- OSNAPS -->
-      <div id="osnaps-wrap">
-        <div class="osnap-title-wrap">
-          <div class="osnap-title">OSNAPS</div>
-          <div class="close-btn">
-            <img src="../icons/close.png" alt="close btn">
+
+      <div id="popup-box">
+        <div class="popup-title-wrap">
+          <h3 style="width: 30%; display: inline-block">속성</h3>
+          <div class="closs-btn-wrap" onclick="popupClose()">
+            <img src="../icons/close_black.png" alt="X" class="close-btn" />
           </div>
         </div>
-        <hr style="background-color: #fff; margin: 0.5rem 0;">
-        <div class="osnap">
-          <input type="checkbox" value="endpoint" id="endpoint" class="osnaps-check" hidden checked>
-          <label for="endpoint"></label>
-          <div class="osnap-name">End point (끝점)</div>
-        </div>
-        <div class="osnap">
-          <input type="checkbox" value="midpoint" id="midpoint" class="osnaps-check" hidden checked>
-          <label for="midpoint"></label>
-          <div class="osnap-name">Mid point (중앙점)</div>
-        </div>
-        <div class="osnap">
-          <input type="checkbox" value="centerpoint" id="centerpoint" class="osnaps-check" hidden checked>
-          <label for="centerpoint"></label>
-          <div class="osnap-name">Center point (중심점)</div>
-        </div>
-        <div class="osnap">
-          <input type="checkbox" value="near" id="near" class="osnaps-check" hidden >
-          <label for="near"></label>
-          <div class="osnap-name">Near (근처점)</div>
-        </div>
-        <div class="osnap">
-          <input type="checkbox" value="insert" id="insert" class="osnaps-check" hidden >
-          <label for="insert"></label>
-          <div class="osnap-name">Insert (삽입점)</div>
-        </div>
-        <div class="osnap">
-          <input type="checkbox" value="node" id="node" class="osnaps-check" hidden >
-          <label for="node"></label>
-          <div class="osnap-name">Node (노드)</div>
-        </div>
-      </div>
-      <!-- OSNAPS -->
-
-
-    <div id="popup-box">
-      <div class="popup-title-wrap">
-        <h3 style="width: 30%; display: inline-block">속성</h3>
-        <div class="closs-btn-wrap" onclick="popupClose()">
-          <img src="../icons/close_black.png" alt="X" class="close-btn">
-        </div>
-      </div>
-      <div class="popup-content">
+        <div class="popup-content"></div>
       </div>
     </div>
-  </div>
 
     <!-- <table>
       <tr>
@@ -361,5 +409,4 @@
     </div> -->
     <script src="../js/script.js"></script>
   </body>
-  </html>
-  
+</html>

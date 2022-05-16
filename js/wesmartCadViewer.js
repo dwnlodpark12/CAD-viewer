@@ -27884,7 +27884,7 @@ function WesmartCad() {
     var vdcanvas = vdmanager.vdrawObject();
     vdcanvas.SelectDocumentBlob(data, filename);
     // console.log(data, filename);
-  }
+  };
 
   //===========================================
 
@@ -27911,7 +27911,6 @@ function WesmartCad() {
     }
     return;
   };
-
 
   //======= 마우스 클릭시 발생 이벤트 ==========
 
@@ -28123,8 +28122,11 @@ function WesmartCad() {
           wrapper.innerHTML += "</div>";
         }
         var popUpBox = document.getElementById("popup-box");
-        popUpBox.style.top = `${mouseY + 40}px`;
-        popUpBox.style.left = `${mouseX + 40}px`;
+        // popUpBox.style.top = `${mouseY + 40}px`;
+        // popUpBox.style.left = `${mouseX + 40}px`;
+        popUpBox.style.top = "50%";
+        popUpBox.style.left = "50%";
+        popUpBox.style.transform = "translate(-50%, -50%)";
         popUpBox.style.display = "block";
 
         if (callbackOptions && callbackOptions.getInfo) {
@@ -28399,7 +28401,7 @@ function WesmartCad() {
                     ettItems._t !== vdConst.vdCircle_code &&
                     (findName == "헤드" || findName == "옥내소화전함")
                   ) {
-                    console.log('test');
+                    console.log("test");
                     if (e.target.checked) ettItems.Deleted = false;
                     else ettItems.Deleted = true;
                   }
