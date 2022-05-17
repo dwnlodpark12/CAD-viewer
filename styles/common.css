@@ -291,33 +291,20 @@ img.close-btn {
 }
 .popup-content {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
+  flex-direction: column;
 }
-.popup-content > div {
-  text-align: center;
-  padding: 0.5rem 0;
-}
+
 
 .info-title {
   flex: 30%;
-  border: 1px solid #aaa;
   border-bottom: 0;
 }
 .info-content {
   flex: 60%;
-  border: 1px solid #aaa;
   border-left: 0;
   border-bottom: 0;
 }
-.info-title:nth-last-child(2) {
-  border-bottom: 1px solid #aaa;
-}
-.info-content:last-child {
-  border-bottom: 1px solid #aaa;
-  /* border-left: 0; */
-}
+
 
 .ListBoxDiv {
   background-color: #fff;

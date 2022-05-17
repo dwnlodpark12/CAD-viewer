@@ -28116,10 +28116,12 @@ function WesmartCad() {
         wrapper.innerHTML = "";
 
         for (let info of GroupInfo) {
-          wrapper.innerHTML += '<div class="info-wrap>';
-          wrapper.innerHTML += `<div class="info-title">${info.Name}</div>`;
-          wrapper.innerHTML += `<div class="info-content">${info.PropValue}</div>`;
-          wrapper.innerHTML += "</div>";
+          const listWrap = document.createElement("div");
+          listWrap.className = 'list-wrap';
+          listWrap.innerHTML += `<div class="info-title">${info.Name}</div>`;
+          listWrap.innerHTML += `<div class="info-content">${info.PropValue}</div>`;
+
+          wrapper.appendChild(listWrap);
         }
         var popUpBox = document.getElementById("popup-box");
         // popUpBox.style.top = `${mouseY + 40}px`;
